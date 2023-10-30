@@ -16,3 +16,13 @@ h1 {
   width: 610px;
   margin: 0 auto;
 }
+
+.guess-box {
+  justify-content: center;
+  display: flex;
+}
+
+.reset {
+  justify-content: center;
+  display: flex;
+}

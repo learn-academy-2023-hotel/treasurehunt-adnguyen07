@@ -27,12 +27,24 @@ const handleSquareClick = (clickedSquareIndex) => {
   let updatedBoard = [...board]
   if (clickedSquareIndex === treasureLocation) {
     updatedBoard[clickedSquareIndex] = "💎"
+    alert ("Congratulations! You found the treasure!")
   } else if (clickedSquareIndex === bombLocation) {
     updatedBoard[clickedSquareIndex] = "💣"
+    alert ("Oh no! You found a bomb and well...you're dead.")
   } else {
     updatedBoard[clickedSquareIndex] = "🌲"
+    setGuess(guess - 1)
   }
   setBoard(updatedBoard)
+}
+
+const reset = () => {
+  window.location.reload()
+}
+
+const [guess, setGuess] = useState(5)
+if (guess === 0) {
+  alert ("Whoops. You ran out of guesses...and lost.")
 }
 
   return (
@@ -43,6 +55,10 @@ const handleSquareClick = (clickedSquareIndex) => {
         console.log(value, index)
         return <Square value={value} index={index} handleSquareClick={handleSquareClick}/>
 })}
+      </div>
+      <p className="guess-box">Guesses Remaining: {guess}</p>
+      <div className="reset">
+      <button onClick={reset}>Play Again</button>
       </div>
     </>
   )
